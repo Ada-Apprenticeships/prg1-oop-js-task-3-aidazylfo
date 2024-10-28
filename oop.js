@@ -42,7 +42,7 @@ get added() {
 }
 class ToDo {
   constructor() {
-        this.tasks = []; // Array to hold Task objects
+   this.tasks = []; // Array to hold Task objects
     }
     
     add(task){
