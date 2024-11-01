@@ -7,14 +7,14 @@ function validatePriority(priority) { // value can be a string or a number (inte
   const priorityValue = Number(priority);
   return[1,3,5,7].includes(priorityValue) ? priorityValue : PRIORITY ['LOW']
 }
-function todaysDate () {
+function todaysDate () { 
  const now = new Date ();
- const day = String(now.getDate()).padStart(2,'0');
- const month = String(now.getMonth() + 1).padStart(2,'0');
- const year = now.getFullYear();
- const hours = String(now.getHours()).padStart(2, '0');
- const minutes = String(now.getMinutes()).padStart(2,'0');
- const seconds = String(now.getSeconds()).padStart(2, '0');
+ const day = String(now.getDate()).padStart(2,'0'); // it creates a two digit string representing the current day of the month
+ const month = String(now.getMonth() + 1).padStart(2,'0'); // it creates a two digit string representing the current month
+ const year = now.getFullYear(); // it creates a to string represent the current day full year 
+ const hours = String(now.getHours()).padStart(2, '0'); // it creates a two digit string representing the hours
+ const minutes = String(now.getMinutes()).padStart(2,'0'); // creates a two digit string representing the minutes 
+ const seconds = String(now.getSeconds()).padStart(2, '0'); // creates a two digit string representing the current seconds
 
  return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}`;
 }
@@ -43,38 +43,35 @@ get added() {
 class ToDo {
   constructor() {
    this.tasks = []; // Array to hold Task objects
-    }
-    
+    }  
     add(task){
      if (task instanceof Task) {
-     this.tasks.push(task);
+     this.tasks.push(task); // it adds a new item to an array property 'task'
      return this.tasks.length;
      } else {
-     throw new Error ('Invalid Task instance');
-     }
-    }
+     throw new Error ('Invalid Task instance'); // this creates and throws a new error 
+     }};
     remove(title){
      const taskIndex = this.tasks.findIndex(task => task.title === title);
      if (taskIndex !== -1){
       this.tasks.splice(taskIndex, 1);
       return true;
      }
-     return false;
-      
+     return false;  
     }
     list(priority = 0) {
      return this.tasks
       .filter(task => priority === 0 || task.priority === priority)
-      .map(task => [task.added, task.title, task.priority]);
+      .map(task => [task.added, task.title, task.priority]); // It transforms the filtered tasks into a new array where each element is an array containing the task's added date, title, and priority.
+
     }
     task(title) {
-      const task = this.tasks.find(task => task.title === title);
+      const task = this.tasks.find(task => task.title === title); // It searches through the tasks array for a task with a title that matches the given title
       if (!task) {
       throw new Error(`Task '${title}' Not Found`);
       }
       return task;
-    }
-    }
+    }}
 // Leave this code here for the automated tests
 module.exports = {
   PRIORITY, validInteger, validatePriority, todaysDate, ToDo, Task,
