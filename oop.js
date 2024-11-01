@@ -19,25 +19,25 @@ function todaysDate () {
  return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}`;
 }
 class Task  {
-_title; // removed the # to change private attribute to public _priority; //  removed the # to change private attribute to public
-_priority; //  removed the # to change private attribute to public
-_added; //  removed the # to change private attribute to public
+#title; // removed the # to change private attribute to public _priority; //  removed the # to change private attribute to public
+#priority; //  removed the # to change private attribute to public
+#added; //  removed the # to change private attribute to public
  constructor(title, priority) {
- this._title = title;
- this._priority = validatePriority(priority);
- this._added = todaysDate(); }
+ this.#title = title;
+ this.#priority = validatePriority(priority);
+ this.#added = todaysDate(); }
 get title() {
-   return this._title;
+   return this.#title;
 }
 get priority () {
-  return this._priority;
+  return this.#priority;
 }
 set priority (newPriority) {
- this._priority = validatePriority(newPriority);
+ this.#priority = validatePriority(newPriority);
 }
 get added() {
 
-  return this._added;
+  return this.#added;
 }
 }
 class ToDo {
